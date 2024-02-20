@@ -1,24 +1,26 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import Edit from "./pages/edit";
+import Tambah from "./pages/Tambah";
+import Detail from "./pages/detail";
+import Navbar from "./component/Navbar";
+import Home from "./pages/home";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <div style={{ display: "flex" }}>
+        <Navbar />
+        <div style={{ flex: 1, padding: "20px", overflow: "auto", marginLeft: "22%" }}>
+          <Switch>
+            <Route path="/" exact component={Home} />
+            <Route path='/edit/:id' component={Edit} exact />
+            <Route path="/tambah" component={Tambah} />
+            <Route path="/lengkap" component={Detail} />
+          </Switch>
+        </div>
+      </div>
+    </Router>
   );
 }
 

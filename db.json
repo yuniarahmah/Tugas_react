@@ -1,0 +1,72 @@
+{
+  "products": [
+    {
+      "id": "1",
+      "title": "Hoodie Polos",
+      "price": 250000
+    },
+    {
+      "id": "2",
+      "title": "Baju Partai",
+      "price": 150000
+    }
+  ],
+  "siswa": [
+    {
+      "id": "1",
+      "nama_panggilan": "Rahma",
+      "nama_lengkap": "Yuniah Rahma",
+      "gender": "Perempuan",
+      "kelas": "X TKJ"
+    },
+    {
+      "id": "2",
+      "nama_lengkap": "Rahma araaaaaa",
+      "nama_panggilan": "araaa",
+      "gender": "Perempuan",
+      "kelas": "X TKJ"
+    },
+    {
+      "id": "3",
+      "nama_lengkap": "Satria Chandra Pamungkas",
+      "nama_panggilan": "candra",
+      "gender": "Laki-laki",
+      "kelas": "X TKJ"
+    },
+    {
+      "id": "4",
+      "nama_lengkap": "Dazkiya Alfyatun Nufus",
+      "nama_panggilan": "alfy",
+      "gender": "Perempuan",
+      "kelas": "X TKJ"
+    },
+    {
+      "id": "5",
+      "nama_lengkap": "Wahyu Yulianto",
+      "nama_panggilan": "Wahyu",
+      "gender": "Laki-laki",
+      "kelas": "X TKJ"
+    },
+    {
+      "id": "6",
+      "nama_lengkap": "Dinda Novita Sari",
+      "nama_panggilan": "Adinda",
+      "kelas": "XI TKJ",
+      "gender": "Perempuan"
+    },
+    {
+      "id": "7",
+      "nama_lengkap": "Andi Saputro",
+      "nama_panggilan": "andi",
+      "kelas": "X TKJ",
+      "gender": "Laki-laki"
+    },
+    {
+      "id": 8,
+      "nama_lengkap": "Seconta Ardiansyah Wicaksono",
+      "nama_panggilan": "Tata",
+      "kelas": "XII TKJ",
+      "gender": "Laki-laki"
+    }
+  ]
+}
