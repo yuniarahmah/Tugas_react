@@ -1,22 +1,16 @@
 import React, { useEffect, useState } from "react";
 import Table from "react-bootstrap/Table";
-import { Button } from "react-bootstrap";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faPlus,
-  faPenToSquare,
-  faTrashAlt,
-} from "@fortawesome/free-solid-svg-icons";
+// import { Button } from "react-bootstrap";
 import axios from "axios";
 import { CircularProgressbar, buildStyles } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
-import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
+// import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 
 function Home() {
   const [userData, setUserData] = useState([]);
-  const [currentPage, setCurrentPage] = useState(1);
+  const [currentPage] = useState(1);
   const [usersPerPage] = useState(5); // Number of users to display per page
-  const history = useHistory();
+  // const history = useHistory();
 
   useEffect(() => {
     axios
@@ -41,8 +35,8 @@ function Home() {
   ).length;
   const totalStudents = userData.length;
 
-  const totalPercentage =
-    ((laki_lakiCount + perempuanCount) / totalStudents) * 100;
+  // const total =
+  //   ((laki_lakiCount + perempuanCount) / totalStudents) * 100;
 
   return (
     <>
@@ -53,24 +47,33 @@ function Home() {
           borderRadius: "8px",
           marginBottom: "20px",
           fontWeight: "bold",
+          fontSize: "20px"
         }}
       >
-        Dashboard
+        Jumlah Gender Siswa
       </div>
+     
       <div>
-        {/* Circular Progress Bars */}
-        <div style={{ background: "#f0f0f0", height: "10%" }}>
-          <h3 style={{ marginLeft: "2%" }}>Jumlah Gender Siswa</h3>
+        {/* <div style={{ background: "#f0f0f0", height: "10%" }}> */}
+        <div
+          style={{
+            display: "flex",
+            gap: "30px",
+            width: "50rem",
+            marginBottom: "5%",
+            marginLeft: "10%",
+          }}
+        >
+          {/* Div untuk CircularProgressbar Male */}
           <div
             style={{
-              display: "flex",
-              gap: "30px",
-              width: "50rem",
-              marginBottom: "10%",
-              marginLeft: "20%",
+              flex: "1",
+              backgroundColor: "#f0f0f0",
+              padding: "5% 8% 5% 8%",
+              borderRadius: "10%",
+              height: "5%",
             }}
           >
-            {/* CircularProgressbar for Male */}
             <CircularProgressbar
               value={(laki_lakiCount / totalStudents) * 100}
               text={`${Math.round(
@@ -87,8 +90,21 @@ function Home() {
                 backgroundColor: "#3e98c7",
               })}
             />
+            {/* <div style={{ textAlign: "center", marginTop: "5px" }}>
+              {kelasLaki}
+            </div> */}
+          </div>
 
-            {/* CircularProgressbar for Female */}
+          {/* Div untuk CircularProgressbar Female */}
+          <div
+            style={{
+              flex: "1",
+              backgroundColor: "#f0f0f0",
+              padding: "5% 8% 5% 8%",
+              borderRadius: "10%",
+              height: "5%",
+            }}
+          >
             <CircularProgressbar
               value={(perempuanCount / totalStudents) * 100}
               text={`${Math.round(
@@ -107,6 +123,20 @@ function Home() {
             />
           </div>
         </div>
+        {/* </div> */}
+      </div>
+
+      <div
+        style={{
+          background: "#f0f0f0",
+          padding: "20px",
+          borderRadius: "8px",
+          marginBottom: "20px",
+          fontWeight: "bold",
+          fontSize: "20px"
+        }}
+      >
+        Jumlah Gender Siswa
       </div>
       <Table
         striped
@@ -139,15 +169,15 @@ function Home() {
           ))}
         </tbody>
       </Table>
-      <Button
+      {/* <Button
         onClick={() => history.push("/lengkap")}
         variant="primary"
         style={{ marginLeft: "20px" }}
       >
         Lihat Semua Data
-      </Button>
+      </Button> */}
       <footer style={{ textAlign: "center", marginTop: "20px" }}>
-        <p>&copy; 2024 Your Company Name. All rights reserved.</p>
+        <p>&copy; 2024 Tugas React.14 January 2024.</p>
       </footer>
     </>
   );

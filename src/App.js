@@ -5,6 +5,7 @@ import Tambah from "./pages/Tambah";
 import Detail from "./pages/detail";
 import Navbar from "./component/Navbar";
 import Home from "./pages/home";
+import visi from "./pages/visi";
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
             <Route path='/edit/:id' component={Edit} exact />
             <Route path="/tambah" component={Tambah} />
             <Route path="/lengkap" component={Detail} />
+            <Route path="/visi" component={visi}/>
           </Switch>
         </div>
       </div>

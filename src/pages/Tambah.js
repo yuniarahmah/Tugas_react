@@ -47,27 +47,35 @@ function Tambah() {
       .post("http://localhost:3030/siswa", productWithId)
       .then((response) => {
         console.log("Product successfully added:", response.data);
+      
+        // Show success message
         Swal.fire({
           icon: "success",
           title: "Sukses!",
           text: "Data berhasil ditambahkan!",
+          showConfirmButton: false, // Hide the default "OK" button
+          timer: 2000, // Set the timer for 3 seconds (adjust as needed)
         }).then(() => {
-          // Redirect atau handle sesuai kebutuhan
-          window.location.href = "/";
+          // Redirect after the timer expires
+          window.location.href = "/lengkap";
         });
       })
       .catch((error) => {
         console.error("Error adding product:", error);
+      
+        // Show error message
         Swal.fire({
           icon: "error",
           title: "Gagal!",
           text: "Gagal menambahkan produk. Silakan coba lagi.",
         });
       });
+      
   };
 
   return (
-    <Card className="mx-auto my-3 p-4" style={{ maxWidth: "900px" }}>
+    <>
+    <Card className="mx-auto my-3 p-4" style={{ maxWidth: "900px", marginBottom: "100%" }}>
       <h2 className="text-center mb-4">Tambah Data</h2>
       <Form onSubmit={handleSubmit}>
         <Form.Group controlId="nama_lengkap">
@@ -125,6 +133,7 @@ function Tambah() {
         </div>
       </Form>
     </Card>
+  </>
   );
 }
 

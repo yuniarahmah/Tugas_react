@@ -20,34 +20,6 @@
       "kelas": "X TKJ"
     },
     {
-      "id": "2",
-      "nama_lengkap": "Rahma araaaaaa",
-      "nama_panggilan": "araaa",
-      "gender": "Perempuan",
-      "kelas": "X TKJ"
-    },
-    {
-      "id": "3",
-      "nama_lengkap": "Satria Chandra Pamungkas",
-      "nama_panggilan": "candra",
-      "gender": "Laki-laki",
-      "kelas": "X TKJ"
-    },
-    {
-      "id": "4",
-      "nama_lengkap": "Dazkiya Alfyatun Nufus",
-      "nama_panggilan": "alfy",
-      "gender": "Perempuan",
-      "kelas": "X TKJ"
-    },
-    {
-      "id": "5",
-      "nama_lengkap": "Wahyu Yulianto",
-      "nama_panggilan": "Wahyu",
-      "gender": "Laki-laki",
-      "kelas": "X TKJ"
-    },
-    {
       "id": "6",
       "nama_lengkap": "Dinda Novita Sari",
       "nama_panggilan": "Adinda",
@@ -55,17 +27,66 @@
       "gender": "Perempuan"
     },
     {
-      "id": "7",
+      "id": 5,
+      "nama_lengkap": "Dazkiya Alfyatun Nufus",
+      "nama_panggilan": "alfy",
+      "kelas": "X TKJ",
+      "gender": "Perempuan"
+    },
+    {
+      "id": 5,
+      "nama_lengkap": "Satria Chandra Pamungkas",
+      "nama_panggilan": "candra",
+      "kelas": "X TKJ",
+      "gender": "Laki-laki"
+    },
+    {
+      "id": 6,
+      "nama_lengkap": "Wahyu Yulianto",
+      "nama_panggilan": "Wahyu",
+      "kelas": "X TKJ",
+      "gender": "Laki-laki"
+    },
+    {
+      "id": 7,
       "nama_lengkap": "Andi Saputro",
-      "nama_panggilan": "andi",
+      "nama_panggilan": "Andi",
       "kelas": "X TKJ",
       "gender": "Laki-laki"
     },
     {
       "id": 8,
+      "nama_lengkap": "Nizar Restu Aji",
+      "nama_panggilan": "Nizar",
+      "kelas": "XI TKJ",
+      "gender": "Laki-laki"
+    },
+    {
+      "id": 9,
+      "nama_lengkap": "Irvanda Ibra",
+      "nama_panggilan": "Irvanda",
+      "kelas": "XII TKJ",
+      "gender": "Laki-laki"
+    },
+    {
+      "id": 10,
+      "nama_lengkap": "Khairun Nisa ",
+      "nama_panggilan": "Nisa",
+      "kelas": "XI TKJ",
+      "gender": "Perempuan"
+    },
+    {
+      "id": 11,
       "nama_lengkap": "Seconta Ardiansyah Wicaksono",
       "nama_panggilan": "Tata",
       "kelas": "XII TKJ",
+      "gender": "Laki-laki"
+    },
+    {
+      "id": 12,
+      "nama_lengkap": "Vanino Ersa Fauzan",
+      "nama_panggilan": "Nino",
+      "kelas": "XI TKJ",
       "gender": "Laki-laki"
     }
   ]

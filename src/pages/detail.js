@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
-import { Button, Pagination, Table } from "react-bootstrap";
+import { Button, Pagination, Table, FormControl } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faPlus,
@@ -12,7 +12,8 @@ import axios from "axios";
 function Detail() {
   const [userData, setUserData] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
-  const [usersPerPage] = useState(10); // Number of users to display per page
+  const [usersPerPage] = useState(7); // Number of users to display per page
+  const [searchTerm, setSearchTerm] = useState("");
   const history = useHistory();
 
   useEffect(() => {
@@ -29,7 +30,10 @@ function Detail() {
   const deleteUser = async (id) => {
     try {
       await axios.delete(`http://localhost:3030/siswa/${id}`);
-      window.location.reload();
+      // Instead of reloading the entire window, you can update the state to trigger a re-render.
+      setUserData((prevUserData) =>
+        prevUserData.filter((user) => user.id !== id)
+      );
     } catch (error) {
       console.error("Error deleting user:", error);
     }
@@ -43,27 +47,64 @@ function Detail() {
     history.push(`/edit/${id}`);
   };
 
+  // Filter users based on search term
+  const filteredUsers = userData.filter(
+    (user) =>
+      user.nama_lengkap.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      user.nama_panggilan.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      user.gender.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      user.kelas.toLowerCase().includes(searchTerm.toLowerCase())
+  );
+
   // Get current users
   const indexOfLastUser = currentPage * usersPerPage;
   const indexOfFirstUser = indexOfLastUser - usersPerPage;
-  const currentUsers = userData.slice(indexOfFirstUser, indexOfLastUser);
+  const currentUsers = filteredUsers.slice(indexOfFirstUser, indexOfLastUser);
 
   // Change page
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
   return (
     <>
-      <div style={{ marginLeft: "92%" }}>
-        <Button
-          onClick={handleTambahClick}
-          style={{
-            border: "10%",
-            borderRadius: "10%",
-            color: "white",
-          }}
-        >
-          <FontAwesomeIcon icon={faPlus} style={{ marginRight: "2px" }} />
-        </Button>
+      <div
+        style={{
+          background: "#f0f0f0",
+          padding: "20px",
+          borderRadius: "8px",
+          marginBottom: "20px",
+          fontWeight: "bold",
+          fontSize: "20px",
+        }}
+      >
+        Data Siswa Lengkap
+      </div>
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "space-between",
+          marginBottom: "10px",
+        }}
+      >
+        <div>
+          <Button
+            onClick={handleTambahClick}
+            style={{
+              border: "10%",
+              borderRadius: "10%",
+              color: "white",
+            }}
+          >
+            <FontAwesomeIcon icon={faPlus} style={{ marginRight: "2px" }} />
+          </Button>
+        </div>
+        <div style={{ marginRight: "4%"}}>
+          <FormControl
+            type="text"
+            placeholder="Search"
+            className="mr-sm-2"
+            onChange={(e) => setSearchTerm(e.target.value)}
+          />
+        </div>
       </div>
       <Table
         striped
@@ -108,11 +149,10 @@ function Detail() {
                     icon={faPenToSquare}
                     style={{ marginRight: "2px" }}
                   />
-                  {/* Edit */}
                 </Button>
                 <Button
                   variant="danger"
-                  onClick={() => deleteUser(user._id)}
+                  onClick={() => deleteUser(user.id)}
                   style={{
                     border: "10%",
                     borderRadius: "10%",
@@ -123,7 +163,6 @@ function Detail() {
                     icon={faTrashAlt}
                     style={{ marginRight: "2px" }}
                   />
-                  {/* Hapus */}
                 </Button>
               </td>
             </tr>
@@ -131,21 +170,18 @@ function Detail() {
         </tbody>
       </Table>
       <Pagination>
-        {Array.from({ length: Math.ceil(userData.length / usersPerPage) }).map(
-          (_, index) => (
-            <Pagination.Item
-              key={index}
-              active={index + 1 === currentPage}
-              onClick={() => paginate(index + 1)}
-            >
-              {index + 1}
-            </Pagination.Item>
-          )
-        )}
+        {Array.from({
+          length: Math.ceil(filteredUsers.length / usersPerPage),
+        }).map((_, index) => (
+          <Pagination.Item
+            key={index}
+            active={index + 1 === currentPage}
+            onClick={() => paginate(index + 1)}
+          >
+            {index + 1}
+          </Pagination.Item>
+        ))}
       </Pagination>
-      <footer style={{ textAlign: "center", marginTop: "20px" }}>
-        <p>&copy; 2024 Your Company Name. All rights reserved.</p>
-      </footer>
     </>
   );
 }
