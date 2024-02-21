@@ -8,6 +8,7 @@ import {
   faTrashAlt,
 } from "@fortawesome/free-solid-svg-icons";
 import axios from "axios";
+import Swal from "sweetalert2";
 
 function Detail() {
   const [userData, setUserData] = useState([]);
@@ -29,13 +30,27 @@ function Detail() {
 
   const deleteUser = async (id) => {
     try {
-      await axios.delete(`http://localhost:3030/siswa/${id}`);
-      // Instead of reloading the entire window, you can update the state to trigger a re-render.
-      setUserData((prevUserData) =>
-        prevUserData.filter((user) => user.id !== id)
-      );
+      const result = await Swal.fire({
+        title: "Apakah Anda yakin?",
+        text: "User ini akan dihapus!",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Ya, hapus!",
+      });
+
+      if (result.isConfirmed) {
+        await axios.delete(`http://localhost:3030/siswa/${id}`);
+        setUserData((prevUserData) =>
+          prevUserData.filter((user) => user.id !== id)
+        );
+
+        Swal.fire("Sukses!", "User berhasil dihapus.", "success");
+      }
     } catch (error) {
       console.error("Error deleting user:", error);
+      Swal.fire("Gagal!", "Gagal menghapus user. Silakan coba lagi.", "error");
     }
   };
 
@@ -97,7 +112,7 @@ function Detail() {
             <FontAwesomeIcon icon={faPlus} style={{ marginRight: "2px" }} />
           </Button>
         </div>
-        <div style={{ marginRight: "4%"}}>
+        <div style={{ marginRight: "4%" }}>
           <FormControl
             type="text"
             placeholder="Search"

@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import Table from "react-bootstrap/Table";
-// import { Button } from "react-bootstrap";
 import axios from "axios";
 import { CircularProgressbar, buildStyles } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
@@ -47,83 +46,59 @@ function Home() {
           borderRadius: "8px",
           marginBottom: "20px",
           fontWeight: "bold",
-          fontSize: "20px"
+          fontSize: "20px",
         }}
       >
         Jumlah Gender Siswa
       </div>
-     
-      <div>
-        {/* <div style={{ background: "#f0f0f0", height: "10%" }}> */}
+
+      <div
+        style={{
+          display: "flex",
+          gap: "30px",
+          width: "40rem",
+          marginBottom: "5%",
+          marginLeft: "10%",
+        }}
+      >
+        {/* Div untuk Pie Chart Male & Female */}
         <div
           style={{
-            display: "flex",
-            gap: "30px",
-            width: "50rem",
-            marginBottom: "5%",
-            marginLeft: "10%",
+            position: "relative",
+            flex: "1",
+            backgroundColor: "#f0f0f0",
+            padding: "5% 8% 5% 8%",
+            borderRadius: "10%",
+            height: "5%",
           }}
         >
-          {/* Div untuk CircularProgressbar Male */}
-          <div
-            style={{
-              flex: "1",
+          <CircularProgressbar
+            value={((laki_lakiCount + perempuanCount) / totalStudents) * 100}
+            text={`${Math.round(
+              ((laki_lakiCount + perempuanCount) / totalStudents) * 100
+            )}%`}
+            styles={buildStyles({
+              rotation: 0,
+              strokeLinecap: "butt",
+              textSize: "10px",
+              pathTransitionDuration: 0.5,
+              pathColor: `rgba(0, 0, 255, ${laki_lakiCount / totalStudents})`, // Blue for Male
+              textColor: "#000",
+              trailColor: "transparent",
               backgroundColor: "#f0f0f0",
-              padding: "5% 8% 5% 8%",
-              borderRadius: "10%",
-              height: "5%",
-            }}
-          >
-            <CircularProgressbar
-              value={(laki_lakiCount / totalStudents) * 100}
-              text={`${Math.round(
-                (laki_lakiCount / totalStudents) * 100
-              )}% Laki-Laki`}
-              styles={buildStyles({
-                rotation: 0.25,
-                strokeLinecap: "butt",
-                textSize: "10px",
-                pathTransitionDuration: 0.5,
-                pathColor: `rgba(0, 0, 255, ${laki_lakiCount / totalStudents})`,
-                textColor: "#000",
-                trailColor: "#d6d6d6",
-                backgroundColor: "#3e98c7",
-              })}
-            />
-            {/* <div style={{ textAlign: "center", marginTop: "5px" }}>
-              {kelasLaki}
-            </div> */}
-          </div>
-
-          {/* Div untuk CircularProgressbar Female */}
-          <div
-            style={{
-              flex: "1",
-              backgroundColor: "#f0f0f0",
-              padding: "5% 8% 5% 8%",
-              borderRadius: "10%",
-              height: "5%",
-            }}
-          >
-            <CircularProgressbar
-              value={(perempuanCount / totalStudents) * 100}
-              text={`${Math.round(
-                (perempuanCount / totalStudents) * 100
-              )}% Perempuan`}
-              styles={buildStyles({
-                rotation: 0.25,
-                strokeLinecap: "butt",
-                textSize: "10px",
-                pathTransitionDuration: 0.5,
-                pathColor: `rgba(255, 0, 0, ${perempuanCount / totalStudents})`,
-                textColor: "#000",
-                trailColor: "#d6d6d6",
-                backgroundColor: "#f95c5a",
-              })}
-            />
+            })}
+          />
+          <svg height="0" width="0">
+            <defs>
+              <clipPath id="pie-clip" clipPathUnits="objectBoundingBox">
+                <polygon points="0.5 0.5, 1 0.5, 1 1, 0.5 1" />
+              </clipPath>
+            </defs>
+          </svg>
+          <div style={{ textAlign: "center", marginTop: "5px" }}>
+            {`${laki_lakiCount} Laki-Laki, ${perempuanCount} Perempuan`}
           </div>
         </div>
-        {/* </div> */}
       </div>
 
       <div
@@ -133,10 +108,10 @@ function Home() {
           borderRadius: "8px",
           marginBottom: "20px",
           fontWeight: "bold",
-          fontSize: "20px"
+          fontSize: "20px",
         }}
       >
-        Jumlah Gender Siswa
+        Tabel Siswa 5 Besar
       </div>
       <Table
         striped

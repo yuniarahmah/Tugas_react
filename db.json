@@ -13,81 +13,67 @@
   ],
   "siswa": [
     {
-      "id": "1",
-      "nama_panggilan": "Rahma",
-      "nama_lengkap": "Yuniah Rahma",
-      "gender": "Perempuan",
-      "kelas": "X TKJ"
-    },
-    {
       "id": "6",
       "nama_lengkap": "Dinda Novita Sari",
       "nama_panggilan": "Adinda",
-      "kelas": "XI TKJ",
+      "kelas": "XII TKJ",
       "gender": "Perempuan"
     },
     {
-      "id": 5,
+      "id": "5",
       "nama_lengkap": "Dazkiya Alfyatun Nufus",
-      "nama_panggilan": "alfy",
+      "nama_panggilan": "zaki",
       "kelas": "X TKJ",
       "gender": "Perempuan"
     },
     {
-      "id": 5,
+      "id": "5",
       "nama_lengkap": "Satria Chandra Pamungkas",
       "nama_panggilan": "candra",
       "kelas": "X TKJ",
       "gender": "Laki-laki"
     },
     {
-      "id": 6,
+      "id": "6",
       "nama_lengkap": "Wahyu Yulianto",
       "nama_panggilan": "Wahyu",
       "kelas": "X TKJ",
       "gender": "Laki-laki"
     },
     {
-      "id": 7,
+      "id": "7",
       "nama_lengkap": "Andi Saputro",
       "nama_panggilan": "Andi",
       "kelas": "X TKJ",
       "gender": "Laki-laki"
     },
     {
-      "id": 8,
+      "id": "8",
       "nama_lengkap": "Nizar Restu Aji",
       "nama_panggilan": "Nizar",
       "kelas": "XI TKJ",
       "gender": "Laki-laki"
     },
     {
-      "id": 9,
+      "id": "9",
       "nama_lengkap": "Irvanda Ibra",
       "nama_panggilan": "Irvanda",
       "kelas": "XII TKJ",
       "gender": "Laki-laki"
     },
     {
-      "id": 10,
+      "id": "10",
       "nama_lengkap": "Khairun Nisa ",
       "nama_panggilan": "Nisa",
       "kelas": "XI TKJ",
       "gender": "Perempuan"
     },
     {
-      "id": 11,
-      "nama_lengkap": "Seconta Ardiansyah Wicaksono",
-      "nama_panggilan": "Tata",
-      "kelas": "XII TKJ",
-      "gender": "Laki-laki"
-    },
-    {
-      "id": 12,
-      "nama_lengkap": "Vanino Ersa Fauzan",
-      "nama_panggilan": "Nino",
-      "kelas": "XI TKJ",
-      "gender": "Laki-laki"
+      "id": "11",
+      "nama_lengkap": "Yuniah Rahmah",
+      "nama_panggilan": "Rahma",
+      "kelas": "X TKJ",
+      "gender": "Perempuan"
     }
   ]
 }

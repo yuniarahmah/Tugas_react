@@ -12,7 +12,7 @@ import {
 function Navbar() {
   return (
     <CDBSidebar
-      style={{ height: "100vh", background: "#B5C0D0", position: "fixed" }}
+      style={{ height: "100vh", background: "#40679E", position: "fixed" }}
     >
       {/* <CDBSidebarHeader prefix={<i className="fa fa-bars" />}> */}
       <CDBSidebarHeader style={{ marginLeft: "20px" }}>

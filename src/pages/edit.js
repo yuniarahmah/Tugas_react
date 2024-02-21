@@ -52,9 +52,12 @@ function Edit() {
         Swal.fire({
           icon: "success",
           title: "Sukses!",
-          text: "Produk berhasil diperbarui!",
+          text: "Data berhasil ditambahkan!",
+          showConfirmButton: false, // Hide the default "OK" button
+          timer: 2000, // Set the timer for 3 seconds (adjust as needed)
         }).then(() => {
-          window.location.href = "/";
+          // Redirect after the timer expires
+          window.location.href = "/lengkap";
         });
       })
       .catch((error) => {
