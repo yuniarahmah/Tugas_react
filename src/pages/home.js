@@ -49,16 +49,15 @@ function Home() {
           fontSize: "20px",
         }}
       >
-        Jumlah Gender Siswa
+        Dashboard
       </div>
 
       <div
         style={{
           display: "flex",
           gap: "30px",
-          width: "40rem",
           marginBottom: "5%",
-          marginLeft: "10%",
+          // marginLeft: "5%",
         }}
       >
         {/* Div untuk Pie Chart Male & Female */}
@@ -67,9 +66,10 @@ function Home() {
             position: "relative",
             flex: "1",
             backgroundColor: "#f0f0f0",
-            padding: "5% 8% 5% 8%",
+            padding: "5px 8px 5px 8px",
             borderRadius: "10%",
             height: "5%",
+            width: "10px",
           }}
         >
           <CircularProgressbar
@@ -82,13 +82,15 @@ function Home() {
               strokeLinecap: "butt",
               textSize: "10px",
               pathTransitionDuration: 0.5,
-              pathColor: `rgba(0, 0, 255, ${laki_lakiCount / totalStudents})`, // Blue for Male
+              pathColor: `rgba(0, 0, 258, ${laki_lakiCount / totalStudents})`, // Blue for Male
               textColor: "#000",
               trailColor: "transparent",
-              backgroundColor: "#f0f0f0",
+              backgroundColor: "transparent",
             })}
           />
-          <svg height="0" width="0">
+          <svg height="0" width="60%">
+            {" "}
+            {/* Adjusted width to 60% */}
             <defs>
               <clipPath id="pie-clip" clipPathUnits="objectBoundingBox">
                 <polygon points="0.5 0.5, 1 0.5, 1 1, 0.5 1" />
@@ -99,51 +101,43 @@ function Home() {
             {`${laki_lakiCount} Laki-Laki, ${perempuanCount} Perempuan`}
           </div>
         </div>
+
+        {/* Tabel */}
+        <div style={{ flex: "1" }}>
+          <Table
+            striped
+            bordered
+            hover
+            style={{
+              width: "100%",
+              fontSize: "0.9em",
+              height: "90%", // Reducing font size of the table content
+            }}
+          >
+            <thead>
+              <tr>
+                <th>No</th>
+                <th>Nama Lengkap</th>
+                <th>Nama Panggilan</th>
+                <th>Gender</th>
+                <th>Kelas</th>
+              </tr>
+            </thead>
+            <tbody>
+              {currentUsers.map((user, index) => (
+                <tr key={index}>
+                  <td>{indexOfFirstUser + index + 1}</td>
+                  <td>{user.nama_lengkap}</td>
+                  <td>{user.nama_panggilan}</td>
+                  <td>{user.gender}</td>
+                  <td>{user.kelas}</td>
+                </tr>
+              ))}
+            </tbody>
+          </Table>
+        </div>
       </div>
 
-      <div
-        style={{
-          background: "#f0f0f0",
-          padding: "20px",
-          borderRadius: "8px",
-          marginBottom: "20px",
-          fontWeight: "bold",
-          fontSize: "20px",
-        }}
-      >
-        Tabel Siswa 5 Besar
-      </div>
-      <Table
-        striped
-        bordered
-        hover
-        style={{
-          marginTop: "8px",
-          marginLeft: "20px",
-          width: "calc(95% - 10px)",
-        }}
-      >
-        <thead>
-          <tr>
-            <th>No</th>
-            <th>Nama Lengkap</th>
-            <th>Nama Panggilan</th>
-            <th>Gender</th>
-            <th>Kelas</th>
-          </tr>
-        </thead>
-        <tbody>
-          {currentUsers.map((user, index) => (
-            <tr key={index}>
-              <td>{indexOfFirstUser + index + 1}</td>
-              <td>{user.nama_lengkap}</td>
-              <td>{user.nama_panggilan}</td>
-              <td>{user.gender}</td>
-              <td>{user.kelas}</td>
-            </tr>
-          ))}
-        </tbody>
-      </Table>
       {/* <Button
         onClick={() => history.push("/lengkap")}
         variant="primary"

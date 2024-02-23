@@ -6,6 +6,8 @@ import Detail from "./pages/detail";
 import Navbar from "./component/Navbar";
 import Home from "./pages/home";
 import visi from "./pages/visi";
+import Login from "./auth/login";
+import Register from "./auth/register";
 
 function App() {
   return (
@@ -19,6 +21,8 @@ function App() {
             <Route path="/tambah" component={Tambah} />
             <Route path="/lengkap" component={Detail} />
             <Route path="/visi" component={visi}/>
+            <Route path="/login" component={Login}/>
+            <Route path="/register" component={Register}/>
           </Switch>
         </div>
       </div>

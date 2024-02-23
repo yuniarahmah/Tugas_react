@@ -75,5 +75,32 @@
       "kelas": "X TKJ",
       "gender": "Perempuan"
     }
+  ],
+  "data": [
+    {
+      "id": 1,
+      "email": "rara@gmail.com",
+      "password": "123456"
+    },
+    {
+      "id": 2,
+      "email": "yura@gmail.com",
+      "password": "123abc"
+    },
+    {
+      "id": 3,
+      "email": "aulia@gmail.com",
+      "password": "12345677"
+    },
+    {
+      "id": 4,
+      "email": "adnida@gmail.com",
+      "password": "123456"
+    },
+    {
+      "id": 5,
+      "email": "mely@gmail.com",
+      "password": "123456"
+    }
   ]
 }
