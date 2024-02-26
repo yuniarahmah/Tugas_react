@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import {
   CDBSidebar,
   CDBSidebarHeader,
@@ -8,12 +8,32 @@ import {
   CDBSidebarMenuItem,
   CDBSidebarFooter,
 } from "cdbreact";
+import Swal from "sweetalert2";
 
 function Navbar() {
+  const location = useLocation();
+
   const logout = () => {
-    localStorage.clear();
-    window.location.href = "/login";
+    // Menampilkan SweetAlert untuk konfirmasi logout
+    Swal.fire({
+      title: "Konfirmasi",
+      text: "Apakah Anda yakin ingin logout?",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Ya, Logout!",
+    })
+    .then((result) => {
+      // Jika pengguna menekan tombol OK, maka logout akan dilakukan
+      if (result.isConfirmed) {
+        localStorage.clear();
+        window.location.href = "/login";
+      }
+    });
   };
+
+  const isLoginOrRegister = location.pathname === '/login' || location.pathname === '/register';
 
   return (
     <CDBSidebar
@@ -36,7 +56,8 @@ function Navbar() {
           </Link>
         </CDBSidebarMenu>
       </CDBSidebarContent>
-      <CDBSidebarFooter style={{ textAlign: "center", marginTop: "auto" }}>
+      {!isLoginOrRegister && (
+        <CDBSidebarFooter style={{ textAlign: "center", marginTop: "auto" }}>
           <CDBSidebarMenuItem
             as="button"
             style={{
@@ -51,10 +72,11 @@ function Navbar() {
           >
             LOGOUT
           </CDBSidebarMenuItem>
-        <div className="sidebar-btn-wrapper" style={{ padding: "20px 5px" }}>
-          Tugas React
-        </div>
-      </CDBSidebarFooter>
+          <div className="sidebar-btn-wrapper" style={{ padding: "20px 5px" }}>
+            Tugas React
+          </div>
+        </CDBSidebarFooter>
+      )}
     </CDBSidebar>
   );
 }

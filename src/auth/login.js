@@ -1,8 +1,18 @@
 import React, { useState } from "react";
-import { Form, Button } from "react-bootstrap";
 import axios from "axios";
 import Swal from "sweetalert2";
-import { Link, useHistory } from "react-router-dom";
+import { useHistory, Link } from "react-router-dom";
+import {
+  MDBContainer,
+  MDBRow,
+  MDBCol,
+  MDBIcon,
+  MDBInput,
+  MDBBtn,
+  MDBCard,
+  MDBCardBody,
+} from "mdb-react-ui-kit";
+import { Button } from "react-bootstrap";
 
 function Login() {
   const [email, setEmail] = useState("");
@@ -37,8 +47,8 @@ function Login() {
       } else {
         Swal.fire({
           icon: "error",
-          title: "Login Failed",
-          text: "Invalid email or password",
+          title: "Login gagal",
+          text: "Harap ulangi nama email atau passsword anda",
         });
       }
     } catch (error) {
@@ -53,45 +63,67 @@ function Login() {
   };
 
   return (
-    <>
-      <div className="Auth-form-container">
-        <form className="Auth-form" onSubmit={handleLogin} method="POST">
-          <div className="Auth-form-content">
-            <h3 className="Auth-form-title">Login</h3>
-            <div className="form-group mt-3">
-              <label>Email address:</label>
-              <input
-                type="email"
-                className="form-control mt-1"
-                placeholder="Enter email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                required
-              />
-            </div>
-            <div className="form-group mt-3">
-              <label>Password:</label>
-              <input
-                type="password"
-                className="form-control mt-1"
-                placeholder="Enter password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                required
-              />
-            </div>
-            <p>
-              Belum punya akun? Silahkan <Link to="/register">Register</Link>
-            </p>
-            <div className="d-grid gap-2 mt-3">
-              <Button variant="primary" type="submit">
-                Login
-              </Button>
-            </div>
-          </div>
-        </form>
-      </div>
-    </>
+    <MDBContainer fluid>
+      <MDBRow center>
+        <MDBCol md="8">
+          <MDBCard
+            className="w-75 p-3"
+            style={{ boxShadow: "0px 0px 30px rgba(0, 0, 0, 0.3)" }}
+          >
+            <MDBCardBody>
+              <div className="d-flex flex-row ps-5 pt-5">
+                <MDBIcon
+                  fas
+                  icon="crow fa-3x me-3"
+                  style={{ color: "#709085" }}
+                />
+                <span className="h1 fw-bold mb-0">Let's Start</span>
+              </div>
+
+              <div className="d-flex flex-column justify-content-center h-custom-2">
+                <h3
+                  className="fw-normal mb-3 ps-5 pb-3"
+                  style={{ letterSpacing: "1px" }}
+                >
+                  Log in
+                </h3>
+
+                <MDBInput
+                  wrapperClass="mb-4"
+                  label="Email address"
+                  id="formControlLg"
+                  type="email"
+                  size="lg"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  required
+                />
+                <MDBInput
+                  wrapperClass="mb-4"
+                  label="Password"
+                  id="formControlLg"
+                  type="password"
+                  size="lg"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  required
+                />
+
+                <Button color="info" onClick={handleLogin}>
+                  Login
+                </Button>
+                <p className="mt-3">
+                  Don't have an account?{" "}
+                  <Link to="/register" className="link-info">
+                    Register here
+                  </Link>
+                </p>
+              </div>
+            </MDBCardBody>
+          </MDBCard>
+        </MDBCol>
+      </MDBRow>
+    </MDBContainer>
   );
 }
 
